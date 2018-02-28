@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 
 filename = ARGV[0]
-RIBOSWITCH_THRESHOLD = 30
 
 # Make sure riboruby only runs on syntactically (if not semantically)
 # valid scripts
@@ -15,13 +14,6 @@ lines = []
 File.open(filename).each do |line|
   lines << line
 end
-
-# If we hit a line that's longer than RIBOSWITCH_THRESHOLD, then we
-# should add it to our current run
-currentRun = []
-
-# Mappings of lines to their associated meaning
-mappings = []
 
 
 def shortline?(line)
@@ -174,7 +166,6 @@ def evaluateReplaceableChunks(statementChunks, chunksToReplace)
 			item[1] == 'END'
 		}
 	end
-	
 end
 
 # Once we know which chunks we can safely replace, go ahead and replace
